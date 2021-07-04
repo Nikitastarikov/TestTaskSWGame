@@ -1,13 +1,18 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class RayShooter : MonoBehaviour
 {
-    private Camera _camera;
+    [SerializeField] private Camera _camera;
+    [SerializeField] private Transform _bulletSpawn;
+    [SerializeField] private ParticleSystem _muzzleFlash;
+    [SerializeField] private AudioClip _shotSFX;
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private GameObject _prefabShotSphere;
+
     void Start()
     {
-        _camera = GetComponent<Camera>();
-
         // Скрываем указатель мыши в центре экрана
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -25,9 +30,17 @@ public class RayShooter : MonoBehaviour
 
     void Update()
     {
+        Shoot();
+    }
+
+    void Shoot()
+    {
         // Реакция на нажатие кнопки мыши
         if (Input.GetMouseButtonDown(0))
         {
+            _audioSource.PlayOneShot(_shotSFX);
+            _muzzleFlash.Play();
+
             // Середина экрана это половина его высоты
             // и половина его ширины
             Vector3 point = new Vector3(_camera.pixelWidth / 2, _camera.pixelHeight / 2, 0);
@@ -44,6 +57,7 @@ public class RayShooter : MonoBehaviour
 
                 if (target != null)
                 {
+                    Debug.Log("Hit to " + target.name);
                     target.ReactToHit();
                 }
                 else
@@ -57,7 +71,7 @@ public class RayShooter : MonoBehaviour
 
     private IEnumerator SphereIndicator(Vector3 position)
     {
-        GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        GameObject sphere = Instantiate(_prefabShotSphere) as GameObject;//GameObject.CreatePrimitive(PrimitiveType.Sphere);
         sphere.transform.position = position;
 
         // Ключевое слово yield указывает сопрограмме
