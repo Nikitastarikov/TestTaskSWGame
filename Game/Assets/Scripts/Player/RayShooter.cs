@@ -89,7 +89,6 @@ public class RayShooter : MonoBehaviour
         }
     }
 
-
     private void Recharge()
     {
         if (_storeVolume == 0 && _totalCartridges > 0)

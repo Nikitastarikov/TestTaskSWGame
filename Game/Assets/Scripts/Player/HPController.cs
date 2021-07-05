@@ -9,11 +9,6 @@ public class HPController : MonoBehaviour
     public Slider _mySlider;
     public Image myImage;
 
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
         _mySlider.value = _hp;
