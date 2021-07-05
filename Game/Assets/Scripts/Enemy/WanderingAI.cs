@@ -27,23 +27,20 @@ public class WanderingAI : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
 
-    /*public void Started()
+    public void Started()
     {
         SetAlive(true);
         _hp = 100f;
         _agent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
-    }*/
+    }
 
     private void FixedUpdate()
     {
         _distance = Vector3.Distance(transform.position, _target.transform.position);
         if (_alive)
         {
-            if (Time.time > _nextAnim)
-                _damage = 0;
-
-            if (_damage > 0)
+            /*if (_damage > 0)
             {
                 _hp -= _damage;
                 _agent.enabled = false;
@@ -52,7 +49,7 @@ public class WanderingAI : MonoBehaviour
                 
             }
             else 
-            {
+            {*/
                 if (_distance > 1.5f)
                 {
                     _agent.enabled = true;
@@ -66,7 +63,7 @@ public class WanderingAI : MonoBehaviour
                     _agent.enabled = false;
                     _animator.Play("Kick");
                 }
-            }            
+            //}            
         }
         else
         {
