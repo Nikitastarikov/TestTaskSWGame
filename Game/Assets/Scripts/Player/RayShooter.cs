@@ -4,42 +4,63 @@ using UnityEngine;
 
 public class RayShooter : MonoBehaviour
 {
+    [SerializeField] private Ak47Data _ak47Data;
     [SerializeField] private Camera _camera;
-    [SerializeField] private Transform _bulletSpawn;
     [SerializeField] private ParticleSystem _muzzleFlash;
+    [SerializeField] private AudioClip _rechargeSFX;
     [SerializeField] private AudioClip _shotSFX;
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private GameObject _prefabShotSphere;
+    [SerializeField] private GameObject _counterUI;
+    [SerializeField] private float _fireRate = 10f;
+    private float _nextFire = 0f;
+    private int _storeVolume = 0;
+    private int _totalCartridges = 0;
 
     void Start()
     {
+        _storeVolume = _ak47Data.StoreVolume;
+        _totalCartridges = _ak47Data.TotalCartridges;
         // Скрываем указатель мыши в центре экрана
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        _counterUI.GetComponent<CartridgeCounter>().Count(_storeVolume, _totalCartridges);
     }
 
     private void OnGUI()
     {
-        // Небольшое смещение с учетом размера прицела
-        int size = 12;
-        float posX = _camera.pixelWidth / 2 - size / 4;
-        float posY = _camera.pixelHeight / 2 - size / 2;
-        // Отоброжаем на экране символ
-        GUI.Label(new Rect(posX, posY, size, size), "*");
+        if (PauseController.pause_bool == false)
+        {
+            // Небольшое смещение с учетом размера прицела
+            int size = 12;
+            float posX = _camera.pixelWidth / 2 - size / 4;
+            float posY = _camera.pixelHeight / 2 - size / 2;
+            // Отоброжаем на экране символ
+            GUI.Label(new Rect(posX, posY, size, size), "*");
+        }
+        
     }
 
     void Update()
     {
-        Shoot();
+        if (PauseController.pause_bool == false && (_totalCartridges > 0 || _storeVolume > 0))
+        {
+            Shoot();
+        }
     }
 
     void Shoot()
     {
         // Реакция на нажатие кнопки мыши
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0) && Time.time > _nextFire)
         {
+            _nextFire = Time.time + 1f / _fireRate;
             _audioSource.PlayOneShot(_shotSFX);
             _muzzleFlash.Play();
+            _storeVolume -= 1;
+            _counterUI.GetComponent<CartridgeCounter>().Count(_storeVolume, _totalCartridges);
+
+            Recharge();
 
             // Середина экрана это половина его высоты
             // и половина его ширины
@@ -57,7 +78,6 @@ public class RayShooter : MonoBehaviour
 
                 if (target != null)
                 {
-                    Debug.Log("Hit to " + target.name);
                     target.ReactToHit();
                 }
                 else
@@ -66,6 +86,18 @@ public class RayShooter : MonoBehaviour
                     StartCoroutine(SphereIndicator(hit.point));
                 }
             }
+        }
+    }
+
+
+    private void Recharge()
+    {
+        if (_storeVolume == 0 && _totalCartridges > 0)
+        {
+            _nextFire = Time.time + 2f / _fireRate;
+            _audioSource.PlayOneShot(_rechargeSFX); 
+            _totalCartridges -= 30;
+            _storeVolume = 30;
         }
     }
 
