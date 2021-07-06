@@ -928,6 +928,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 511162998604665649, guid: d7788535e9db78b4b8017ab9a0bcdadc,
+        type: 3}
+      propertyPath: _sensitivityHorizontal
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 511162998604665649, guid: d7788535e9db78b4b8017ab9a0bcdadc,
+        type: 3}
+      propertyPath: _sensitivityVertical
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1220042617511353703, guid: d7788535e9db78b4b8017ab9a0bcdadc,
+        type: 3}
+      propertyPath: _sensitivityHorizontal
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1220042617511353703, guid: d7788535e9db78b4b8017ab9a0bcdadc,
+        type: 3}
+      propertyPath: _sensitivityVertical
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5312460962479007848, guid: d7788535e9db78b4b8017ab9a0bcdadc,
         type: 3}
       propertyPath: PlayerDataOb

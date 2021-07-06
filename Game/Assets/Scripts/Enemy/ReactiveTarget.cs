@@ -3,16 +3,14 @@ using UnityEngine;
 
 public class ReactiveTarget : MonoBehaviour
 {
-    /// <summary>
-    /// Метод, вызванный сценарием стрельбы
-    /// </summary>
-    public void ReactToHit()
+    public void ReactToHit(float damage)
     {
         WanderingAI behavior = GetComponent<WanderingAI>();
         if (behavior != null)
         {
-            behavior.Damage = true;
-            behavior.HP -= 25f;
+            Debug.Log("damage = " + damage);
+            behavior.Damage = damage;
+            behavior.HP -= damage;
             if (behavior.HP <= 0)
             {
                 //Debug.Log("Убив");

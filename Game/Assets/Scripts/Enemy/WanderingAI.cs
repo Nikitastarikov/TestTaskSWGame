@@ -6,14 +6,14 @@ public class WanderingAI : MonoBehaviour
 {
     [SerializeField] private SimpleEnemyData _simpleEnemyData;
     private float _currentHP;
-    private bool _damage = false;
+    private float _damage = 0f;
     private float _distance;
     private bool _alive;
     private NavMeshAgent _agent;
     private Animator _animator;
 
     public float HP { set { _currentHP = value; } get { return _currentHP; } }
-    public bool Damage { set { _damage = value; } get { return _damage; } }
+    public float Damage { set { _damage = value; } get { return _damage; } }
 
     [SerializeField] private Transform _target;
     public Transform Target { set { _target = value; } get { return _target; } }
@@ -39,10 +39,10 @@ public class WanderingAI : MonoBehaviour
         _distance = Vector3.Distance(transform.position, _target.transform.position);
         if (_alive)
         {
-            if (_damage == true)
+            if (_damage > 0)
             {
                 _agent.enabled = false;
-                _animator.SetFloat("Damage", 25f);
+                _animator.SetFloat("Damage", _damage);
                 StartCoroutine(DamageFunUpav());
             }
             else
@@ -66,8 +66,15 @@ public class WanderingAI : MonoBehaviour
         else
         {
             _agent.enabled = false;
-            //_animator.Play("Dying");
-            _animator.SetBool("Alive", false);
+            if (_damage > 99)
+            {
+                _animator.SetFloat("Damage", _damage);
+            }
+            else
+            {
+                //_animator.Play("Dying");
+                _animator.SetBool("Alive", false);
+            }
         }
     }
 
@@ -77,7 +84,7 @@ public class WanderingAI : MonoBehaviour
         yield return new WaitForSeconds(1);
         _animator.SetFloat("Damage", 0f);
         //_agent.enabled = false;
-        _damage = false;
+        _damage = 0;
     }
 
     public void SetAlive(bool alive)
