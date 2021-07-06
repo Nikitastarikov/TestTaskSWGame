@@ -73,12 +73,32 @@ public class RayShooter : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
             {
                 // Получаем объект, в который попал луч
-                GameObject hitObject = hit.transform.gameObject;
+                GameObject hitObject = hit.collider.transform.gameObject;
                 ReactiveTarget target = hitObject.GetComponent<ReactiveTarget>();
-
+                
                 if (target != null)
                 {
-                    target.ReactToHit();
+                    target.ReactToHit(25f);
+                }
+                else if (hitObject != null && hitObject.name == "LegtUpLegForTakingDamage")
+                {
+                    hitObject.GetComponent<EnemyDamageParts>().ReactToHit(15f);
+                }
+                else if (hitObject != null && hitObject.name == "RighttUpLegForTakingDamage")
+                {
+                    hitObject.GetComponent<EnemyDamageParts>().ReactToHit(15f);
+                }
+                else if (hitObject != null && hitObject.name == "HeadForTakingDamage")
+                {
+                    hitObject.GetComponent<EnemyDamageParts>().ReactToHit(100f);
+                }
+                else if (hitObject != null && hitObject.name == "LeftUpLegForTakingDamage")
+                {
+                    hitObject.GetComponent<EnemyDamageParts>().ReactToHit(20f);
+                }
+                else if (hitObject != null && hitObject.name == "RightUpLegForTakingDamage")
+                {
+                    hitObject.GetComponent<EnemyDamageParts>().ReactToHit(20f);
                 }
                 else
                 {
