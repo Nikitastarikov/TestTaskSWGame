@@ -55,7 +55,7 @@ public class WanderingAI : MonoBehaviour
                     _animator.SetFloat("Distance", _distance);
                 }
 
-                if (_distance <= 1.5)
+                if (_distance <= 1.5f)
                 {
                     _agent.enabled = false;
                     //_animator.Play("Kick");
