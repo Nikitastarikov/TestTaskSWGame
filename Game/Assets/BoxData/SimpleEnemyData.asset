@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 290151001fa9cbd4981648a5f2366712, type: 3}
-  m_Name: PlayerData
+  m_Script: {fileID: 11500000, guid: 50ae693f6fd5ce34487e8cd7c63f13a3, type: 3}
+  m_Name: SimpleEnemyData
   m_EditorClassIdentifier: 
-  _speed: 6
-  _jump_force: 10
   _hp: 100
+  _speed: 300
+  _damage: 10

@@ -4,14 +4,15 @@ using UnityEngine.AI;
 
 public class WanderingAI : MonoBehaviour
 {
-    private float _hp;
+    [SerializeField] private SimpleEnemyData _simpleEnemyData;
+    private float _currentHP;
     private bool _damage = false;
     private float _distance;
     private bool _alive;
     private NavMeshAgent _agent;
     private Animator _animator;
 
-    public float HP { set { _hp = value; } get { return _hp; } }
+    public float HP { set { _currentHP = value; } get { return _currentHP; } }
     public bool Damage { set { _damage = value; } get { return _damage; } }
 
     [SerializeField] private Transform _target;
@@ -20,7 +21,7 @@ public class WanderingAI : MonoBehaviour
     private void Start()
     {
         SetAlive(true);
-        _hp = 100f;
+        _currentHP = _simpleEnemyData.HP;
         _agent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
     }
@@ -28,7 +29,7 @@ public class WanderingAI : MonoBehaviour
     /*public void Started()
     {
         SetAlive(true);
-        _hp = 100f;
+        _currentHP = _simpleEnemyData.HP;
         _agent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
     }*/

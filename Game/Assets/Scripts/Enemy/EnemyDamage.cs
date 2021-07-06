@@ -9,7 +9,7 @@ public class EnemyDamage : MonoBehaviour
         if (other.tag == ("Player"))
         {
             //Debug.Log("damage");
-            other.GetComponent<HPController>()._hp -= 10;
+            other.GetComponent<HPController>().HP -= 10;
         }
     }
 }

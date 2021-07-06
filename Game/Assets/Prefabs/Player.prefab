@@ -5664,7 +5664,6 @@ GameObject:
   - component: {fileID: 7300753368800316762}
   - component: {fileID: 7300753368800316761}
   - component: {fileID: 5312460962479007848}
-  - component: {fileID: 5181950368508465357}
   - component: {fileID: 511162998604665649}
   - component: {fileID: 6384212975763070435}
   - component: {fileID: 6384212975763070436}
@@ -5767,21 +5766,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e20b2a017070f043a45071116f947db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerDataOb: {fileID: 11400000, guid: be7fd710f2a3b3640a7dce325fc253e7, type: 2}
+  PlayerDataOb: {fileID: 11400000, guid: 2a47f84f853cb5240be669e934c75c17, type: 2}
   _gravity: -9.8
---- !u!114 &5181950368508465357
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7300753368800316760}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0e945289ab712144abaf3bbbf55a80e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _health: 0
 --- !u!114 &511162998604665649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5812,7 +5798,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f3cba9ce8a1616419afa40f44f35b53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hp: 100
+  _playerData: {fileID: 11400000, guid: 2a47f84f853cb5240be669e934c75c17, type: 2}
   _mySlider: {fileID: 6384212975867998295}
   myImage: {fileID: 6384212974247797759}
 --- !u!114 &6384212975763070436

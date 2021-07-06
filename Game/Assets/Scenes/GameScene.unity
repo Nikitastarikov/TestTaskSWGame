@@ -928,6 +928,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5312460962479007848, guid: d7788535e9db78b4b8017ab9a0bcdadc,
+        type: 3}
+      propertyPath: PlayerDataOb
+      value: 
+      objectReference: {fileID: 11400000, guid: 2a47f84f853cb5240be669e934c75c17,
+        type: 2}
     - target: {fileID: 6384212974247797758, guid: d7788535e9db78b4b8017ab9a0bcdadc,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -937,6 +943,37 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6384212974808642414, guid: d7788535e9db78b4b8017ab9a0bcdadc,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 6384212974808642415, guid: d7788535e9db78b4b8017ab9a0bcdadc,
+        type: 3}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6384212974808642415, guid: d7788535e9db78b4b8017ab9a0bcdadc,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6384212975763070435, guid: d7788535e9db78b4b8017ab9a0bcdadc,
+        type: 3}
+      propertyPath: _playerData
+      value: 
+      objectReference: {fileID: 11400000, guid: 2a47f84f853cb5240be669e934c75c17,
+        type: 2}
+    - target: {fileID: 6384212975836396931, guid: d7788535e9db78b4b8017ab9a0bcdadc,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6384212975836396933, guid: d7788535e9db78b4b8017ab9a0bcdadc,
+        type: 3}
+      propertyPath: m_ScaleFactor
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 7300753368800316760, guid: d7788535e9db78b4b8017ab9a0bcdadc,
         type: 3}
@@ -998,7 +1035,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5181950368508465357, guid: d7788535e9db78b4b8017ab9a0bcdadc, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d7788535e9db78b4b8017ab9a0bcdadc, type: 3}
 --- !u!1001 &7036741238144874315
 PrefabInstance:
