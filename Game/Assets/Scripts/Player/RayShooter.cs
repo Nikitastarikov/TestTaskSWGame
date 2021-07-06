@@ -80,25 +80,9 @@ public class RayShooter : MonoBehaviour
                 {
                     target.ReactToHit(25f);
                 }
-                else if (hitObject != null && hitObject.name == "LegtUpLegForTakingDamage")
+                else if (hitObject != null && hitObject.tag == "ForTakingDamage")
                 {
-                    hitObject.GetComponent<EnemyDamageParts>().ReactToHit(15f);
-                }
-                else if (hitObject != null && hitObject.name == "RighttUpLegForTakingDamage")
-                {
-                    hitObject.GetComponent<EnemyDamageParts>().ReactToHit(15f);
-                }
-                else if (hitObject != null && hitObject.name == "HeadForTakingDamage")
-                {
-                    hitObject.GetComponent<EnemyDamageParts>().ReactToHit(100f);
-                }
-                else if (hitObject != null && hitObject.name == "LeftUpLegForTakingDamage")
-                {
-                    hitObject.GetComponent<EnemyDamageParts>().ReactToHit(20f);
-                }
-                else if (hitObject != null && hitObject.name == "RightUpLegForTakingDamage")
-                {
-                    hitObject.GetComponent<EnemyDamageParts>().ReactToHit(20f);
+                    hitObject.GetComponent<EnemyDamageParts>().ReactToHit(hitObject);
                 }
                 else
                 {
